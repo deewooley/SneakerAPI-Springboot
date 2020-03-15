@@ -3,7 +3,10 @@ package com.example.sneakers.service;
 import com.example.sneakers.model.Sneaker;
 import com.example.sneakers.repository.SneakerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +21,9 @@ public class SneakerService {
         List<Sneaker> listOfSneakers = new ArrayList<>();
         sneakerRepository.findAll().forEach(listOfSneakers::add);
         return listOfSneakers;
+
     }
+
     public void addSneaker(Sneaker sneaker){
         sneakerRepository.save(sneaker);
     }
